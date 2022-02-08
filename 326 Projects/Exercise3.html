@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title> "Onto the next one" </title>
+    </head>
+    <script>
+        function decoderring(rotation)
+        {
+            const obj = { encodemap : {}, decodemap: {}}
+            for(let i = 0; i < 26; i++)
+            {
+                actualletter = i
+                cipherletter = (i + rotation) % 26
+                actualletter += 97
+                cipherletter += 97
+
+                obj.encodemap[String.fromCharCode(actualletter)] = String.fromCharCode(cipherletter)
+                obj.decodemap[String.fromCharCode(cipherletter)] = String.fromCharCode(actualletter)
+            }
+
+            obj.encode = function(str)
+            {
+                let encodedstr = str.split('').map((ch) => 
+                {
+                    return obj.encodemap[ch]
+                })
+
+                return encodedstr.join('')
+            }
+
+            obj.decode = function(str)
+            {
+                let decodedstr = str.split('').map((ch) => 
+                {
+                    return obj.decodemap[ch]
+                })
+
+                return decodedstr.join('')
+            }
+
+            return obj
+        }
+        
+        let cipher = decoderring(1)
+        console.assert(cipher.encode("hi") === "ij")
+        console.assert(cipher.encode("yz") === "za")
+        console.assert(cipher.decode("za") === "yz")
+    </script>
+</html>
