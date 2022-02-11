@@ -26,12 +26,12 @@ class decoder
 
         for(let i = 0; i < 26; i++)
             {
-                actualletter = i;
-                
+                let actualletter = i;
                 actualletter += 97;
+                actualletter = String.fromCharCode(actualletter)
 
-                obj.encodemap[String.fromCharCode(actualletter)] = this._cipher.charAt(i);
-                obj.decodemap[this._cipher.charAt(i)] = String.fromCharCode(actualletter);
+                this.encodeMap[actualletter] = this.cipher[i];
+                this.decodeMap[this.cipher[i]] = actualletter;
             }
     }
   
@@ -39,7 +39,7 @@ class decoder
     {
         let encodedstr = str.split('').map((ch) => 
                 {
-                    return this.encodemap[ch];
+                    return this.encodeMap[ch];
                 })
 
                 return encodedstr.join('');
@@ -49,10 +49,10 @@ class decoder
     {
         let decodedstr = str.split('').map((ch) => 
                 {
-                    return this.decodemap[ch]
+                    return this.decodeMap[ch];
                 })
 
-                return decodedstr.join('')
+                return decodedstr.join('');
     }
 
     
@@ -65,17 +65,24 @@ class decoderRing extends decoder {
       for(let i = 0; i < 26; i++)
         {
             
-            cipherletter = (i + rotation) % 26;
+            let cipherletter = (i + rotation) % 26;
             cipherletter += 97;
             str.push(String.fromCharCode(cipherletter));
         }
-        
+
       // consisting of the rotated alphabet
       // then invoke the superclass constructor
       // e.g., if rotation === 2,
       //   str === 'cdefghj...';
-      super(JSON.stringify(str));
+      super(str.join(""));
     }
   }
+
+let caesar = new decoderRing(1);
+let secret = new decoder("cdefghijklmnopqrstuvwxyzab");
+console.assert(caesar.encode("yz") === "za");
+console.assert(secret.encode("yz") === "ab");
+console.assert(caesar.decode("za") === "yz");
+console.assert(secret.decode("ab") === "yz");
   
   
