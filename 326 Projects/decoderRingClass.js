@@ -21,8 +21,8 @@ class decoder
 
     _rebuildMaps() // rebuilds encodeMap and decodeMap
     { 
-        this.encodeMap = {};
-        this.decodeMap = {};
+        this.encodeMap = {" " : " ", "," : ",", "." : "."};
+        this.decodeMap = {" " : " ", "," : ",", "." : "."};
 
         for(let i = 0; i < 26; i++)
             {
