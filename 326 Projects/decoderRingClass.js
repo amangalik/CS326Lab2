@@ -55,7 +55,6 @@ class decoder
                 return decodedstr.join('');
     }
 
-    
 }
 
 class decoderRing extends decoder {
@@ -84,5 +83,6 @@ console.assert(caesar.encode("yz") === "za");
 console.assert(secret.encode("yz") === "ab");
 console.assert(caesar.decode("za") === "yz");
 console.assert(secret.decode("ab") === "yz");
-  
+
+export {decoder};
   
