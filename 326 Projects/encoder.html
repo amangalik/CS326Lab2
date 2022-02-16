@@ -1,15 +1,51 @@
 <!DOCTYPE html>
-<head>
-    <title>
-        "Encode and Decode!"
-    </title>
-    <body>
-        <script src + decoderRingClass.js></script>
+<html>
+    <head>
+        <title>
+            Encode and Decode!
+    </title>>
+        <script src = decoderRingClass.js></script>
         <script>
-            doIt()
+            function doIt()
             {
-                
+                const key = document.getElementById("key");
+                const encode = document.getElementById("encode");
+                const encoded = document.getElementById("encoded");
+                const decode = document.getElementById("decode");
+                const decoded = document.getElementById("decoded");
+
+                let cipher = new decoder(key.value);
+                encoded.value = cipher.encode(encode.value);
+                decoded.value = cipher.decode(decode.value);
             }
         </script>
+    </head>
+    
+    <body> 
+        <center>
+            <h1>Encoder/Decoder</h1>
+            <img src = "https://github.com/emeryberger/web-programming/raw/master/decoder-ring.jpg" ALT = "Cipher Ring"/>
+            <br>
+            <br>
+            <form>
+                <Label for = "key">Key:</Label>
+                <Input type = "text" ID = "key"/>
+                <br>
+                <br>
+                <Label for = "encode">Text to Encode:</Label>
+                <Input type = "text" ID = "encode"/>
+                <Label for = "encoded">Encoded = </Label>
+                <Input type = "text" ID = "encoded" readonly = "readonly"/>
+                <br>
+                <br>
+                <Label for = "decode">Text to Decode:</Label>
+                <Input type = "text" ID = "decode"/>
+                <Label for = "decoded">Decoded = </Label>
+                <Input type = "text" ID = "decoded" readonly = "readonly"/>
+                <br>
+                <br>
+                <Input type = "button", onclick = "doIt()" value = "Go"/>
+            </form>
+        </center>
     </body>
-</head>
+</html>
