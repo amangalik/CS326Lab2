@@ -1,0 +1,54 @@
+.board {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px;
+    column-gap: 2px;
+    row-gap: 2px;
+}
+
+.blackspace
+{
+    background-color: black;
+    color: black;
+}
+
+.whitespace
+{
+    background-color: white;
+    color: white;
+}
+
+.blackspace:hover
+{
+    background-color: red;
+    color:white;
+    content: hello;
+}
+
+.whitespace:hover
+{
+    background-color: red;
+    content: "hello";
+}
+
+/*
+#item1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+#item2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#item3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#item4 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+*/
